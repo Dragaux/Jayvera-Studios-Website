@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jayvera Studios — Web design & software, built precisely</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a href="#top" class="brand"><span class="mark"></span>Jayvera Studios</a>
+    <button class="navToggle" id="navToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    <div class="navlinks" id="navlinks">
+      <a href="#work">Work</a>
+      <a href="#technology">Technology</a>
+      <a href="#about">About</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact" class="cta">Start a project</a>
+    </div>
+  </nav>
+</header>
+
+<section class="hero" id="top">
+  <div class="hero-grid" aria-hidden="true"></div>
+  <div class="wrap hero-inner">
+    <span class="eyebrow">Web design & software studio · New Jersey</span>
+    <h1>We build websites that <em>actually work</em> for the businesses that need them.</h1>
+    <p class="lede">Jayvera Studios designs and builds real, working sites and tools for small businesses and nonprofits — from the first sketch to the deployed product.</p>
+    <div class="hero-ctas">
+      <a href="#work" class="btn btn-primary">View the work</a>
+      <a href="#contact" class="btn btn-ghost">Start a project →</a>
+    </div>
+  </div>
+  <div class="hero-specs">
+    <div class="wrap">
+      <span><strong>Founded</strong> 2025</span>
+      <span><strong>Based in</strong> Somerset County, NJ</span>
+      <span><strong>Studio size</strong> Solo — one founder, full stack</span>
+      <span><strong>Focus</strong> Local business & nonprofit websites</span>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="fig"><span class="num">FIG. 01</span><span class="rule"></span><span class="label">What we do</span></div>
+    <h2 style="font-size:clamp(1.6rem,3vw,2.2rem);max-width:640px;margin-bottom:44px;">Three ways we help a business look and work like it means it.</h2>
+    <div class="service-grid" id="serviceGrid">
+      <!-- populated by main.js from GET /api/services -->
+    </div>
+  </div>
+</section>
+
+<section class="work" id="work">
+  <div class="wrap">
+    <div class="fig"><span class="num">FIG. 02</span><span class="rule"></span><span class="label">Selected work</span></div>
+    <h2 style="font-size:clamp(1.6rem,3vw,2.2rem);">Projects we've shipped.</h2>
+    <p class="work-lede">A mix of client work and independent builds — each one a real, deployed product, not a mockup.</p>
+    <div class="card-grid" id="workGrid">
+      <!-- populated by main.js from GET /api/projects -->
+    </div>
+  </div>
+</section>
+
+<section class="tech" id="technology">
+  <div class="wrap">
+    <div class="fig"><span class="num">FIG. 03</span><span class="rule"></span><span class="label">Technology</span></div>
+    <h2 style="font-size:clamp(1.6rem,3vw,2.2rem);max-width:680px;margin-bottom:18px;">One core stack, reused and hardened across every build.</h2>
+    <p class="tech-lede">Every project starts from the same foundation established with Clarivo — proven pieces, not a new toolchain each time.</p>
+    <div class="stack-grid">
+      <span>Node.js</span><span>Express</span><span>SQLite</span><span>React / Next.js</span>
+      <span>Stripe</span><span>OpenAI</span><span>Resend</span><span>Supabase</span>
+      <span>Railway</span><span>Cloudflare</span><span>GitHub</span><span>TypeScript</span>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="wrap about-grid">
+    <div class="about-visual">
+      <div class="row"><span class="mono">STUDIO</span><span>Jayvera Studios</span></div>
+      <div class="row"><span class="mono">FOUNDER</span><span>Jay</span></div>
+      <div class="row"><span class="mono">LOCATION</span><span>Franklin Township, NJ</span></div>
+      <div class="row"><span class="mono">TYPE</span><span>Student-run, solo developer</span></div>
+      <div class="row"><span class="mono">STACK</span><span>JS / Node / React</span></div>
+      <div class="row"><span class="mono">CONTACT</span><span>teamjayvera@gmail.com</span></div>
+    </div>
+    <div class="about-copy">
+      <div class="fig"><span class="num">FIG. 04</span><span class="rule"></span><span class="label">About</span></div>
+      <h2 style="font-size:clamp(1.6rem,3vw,2.2rem);margin-bottom:22px;">A one-person studio that builds like a bigger one.</h2>
+      <p>Jayvera Studios is run by Jay, a student developer based in Franklin Township, New Jersey. Every project — design, code, and deployment — is handled end to end, without outsourcing or templates.</p>
+      <p>The studio started with a simple observation: a lot of good local businesses and nonprofits are stuck with websites that don't represent them well. Jayvera exists to fix that — with real, working sites built specifically for the business behind them.</p>
+      <p>Because the studio is student-run, any project involving payments, billing, or contracts is handled with parental involvement.</p>
+      <div class="values">
+        <span>Built, not templated</span>
+        <span>Direct communication</span>
+        <span>Shipped, not just designed</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="timeline" id="timeline">
+  <div class="wrap">
+    <div class="fig"><span class="num">FIG. 05</span><span class="rule"></span><span class="label">Timeline</span></div>
+    <h2 style="font-size:clamp(1.6rem,3vw,2.2rem);margin-bottom:44px;">How the studio got here.</h2>
+    <div class="timeline-list">
+      <div class="timeline-item">
+        <span class="timeline-year mono">2025</span>
+        <div><h3>Jayvera Studios founded</h3><p>Started as a one-person studio building real websites for local NJ businesses and nonprofits.</p></div>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-year mono">2026</span>
+        <div><h3>Clarivo launched</h3><p>An AI-powered decision intelligence SaaS at myclarivo.com — the project that established the core stack every build since has reused.</p></div>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-year mono">2026</span>
+        <div><h3>Evergray shipped</h3><p>A nonprofit awareness site for senior shelter-pet adoption, connecting visitors with The Grey Muzzle Organization.</p></div>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-year mono">2026</span>
+        <div><h3>Client & platform work expands</h3><p>Vestista (Carbuyus), the Durga Mandir volunteer platform, Skyward Dispatch, and Stockalytica all move into active development.</p></div>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-year mono">Next</span>
+        <div><h3>More builds, same foundation</h3><p>Continuing to take on local business and nonprofit projects, one shipped product at a time.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="faq" id="faq">
+  <div class="wrap">
+    <div class="fig"><span class="num">FIG. 06</span><span class="rule"></span><span class="label">FAQ</span></div>
+    <div class="faq-list">
+      <details open>
+        <summary>What does Jayvera Studios do?</summary>
+        <p>We design and build websites, dashboards, and small custom tools for local businesses and nonprofits — from initial design through deployment.</p>
+      </details>
+      <details>
+        <summary>Who's behind the studio?</summary>
+        <p>Jayvera Studios is founded and run solo by Jay, a student developer based in Somerset County, New Jersey.</p>
+      </details>
+      <details>
+        <summary>Do you work with businesses outside New Jersey?</summary>
+        <p>Most current work is with local NJ businesses and organizations, but the studio can take on remote projects as well — reach out and we'll talk through it.</p>
+      </details>
+      <details>
+        <summary>How do payments and contracts work?</summary>
+        <p>Since the studio is student-run, any step involving payments, billing accounts, or legal contracts is handled with parental involvement.</p>
+      </details>
+      <details>
+        <summary>How do I get started?</summary>
+        <p>Use the form below, or email teamjayvera@gmail.com with a bit about your business and what you're looking for — we'll follow up to talk through the project.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="hero-grid" aria-hidden="true"></div>
+  <div class="wrap contact-inner">
+    <div class="contact-head">
+      <div class="fig" style="justify-content:center;"><span class="num">FIG. 07</span><span class="rule" style="max-width:80px;"></span><span class="label">Contact</span></div>
+      <h2>Have a business or project that needs a real website?</h2>
+      <p class="lede">Fill out the form and it goes straight into our project tracker — we'll follow up with next steps.</p>
+      <p class="contact-alt">Prefer email? Write to <a href="mailto:teamjayvera@gmail.com">teamjayvera@gmail.com</a></p>
+    </div>
+
+    <form class="contact-form" id="contactForm">
+      <div class="form-row">
+        <div class="form-field">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" placeholder="Your name" required>
+        </div>
+        <div class="form-field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="you@business.com" required>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-field">
+          <label for="business">Business / organization</label>
+          <input type="text" id="business" name="business" placeholder="Optional">
+        </div>
+        <div class="form-field">
+          <label for="budget">Rough budget</label>
+          <select id="budget" name="budget">
+            <option value="">Not sure yet</option>
+            <option value="Under $500">Under $500</option>
+            <option value="$500–$1,500">$500–$1,500</option>
+            <option value="$1,500–$5,000">$1,500–$5,000</option>
+            <option value="Let's discuss">Let's discuss</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-field">
+        <label for="message">What do you need?</label>
+        <textarea id="message" name="message" placeholder="Tell us about your business and what you're looking for..." required></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary" id="submitBtn">Send message</button>
+      <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#top" class="brand" style="color:var(--paper);margin-bottom:14px;display:inline-flex;">
+          <span class="mark" style="border-color:var(--line-cyan);"></span>Jayvera Studios
+        </a>
+        <p>A student-run web design studio based in Franklin Township, New Jersey — building real websites for real businesses.</p>
+      </div>
+      <div>
+        <h4>Studio</h4>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#technology">Technology</a></li>
+          <li><a href="#timeline">Timeline</a></li>
+          <li><a href="#work">Work</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Live projects</h4>
+        <ul>
+          <li><a href="https://myclarivo.com" target="_blank" rel="noopener">Clarivo</a></li>
+          <li><a href="https://evergray.up.railway.app" target="_blank" rel="noopener">Evergray</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="mailto:teamjayvera@gmail.com">Email</a></li>
+          <li><a href="https://github.com/Dragaux" target="_blank" rel="noopener">GitHub</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Jayvera Studios. All rights reserved.</span>
+      <span>Designed & built by Jay</span>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/main.js"></script>
+</body>
+</html>

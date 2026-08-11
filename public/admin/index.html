@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jayvera Studios — Admin</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/admin/css/admin.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.4/chart.umd.min.js"></script>
+</head>
+<body>
+
+<!-- ================= LOGIN GATE ================= -->
+<div id="loginScreen">
+  <div class="login-box">
+    <h1>Jayvera Studios</h1>
+    <p class="mono">Admin access — enter your admin key</p>
+    <input type="password" id="adminKeyInput" placeholder="ADMIN_KEY" autocomplete="off">
+    <button id="loginBtn">Unlock dashboard</button>
+    <div class="login-error" id="loginError"></div>
+  </div>
+</div>
+
+<!-- ================= APP SHELL ================= -->
+<div id="app">
+  <aside class="sidebar">
+    <div class="brand"><span class="mark"></span>Jayvera Admin</div>
+    <nav>
+      <button class="nav-btn active" data-view="overview">Overview</button>
+      <button class="nav-btn" data-view="leads">Leads</button>
+      <button class="nav-btn" data-view="projects">Projects</button>
+      <button class="nav-btn" data-view="services">Services</button>
+    </nav>
+    <div class="spacer"></div>
+    <a href="/" class="viewsite mono">← View live site</a>
+    <button class="logout mono" id="logoutBtn">Lock dashboard</button>
+  </aside>
+
+  <main>
+    <!-- ---------- OVERVIEW ---------- -->
+    <section class="view active" id="view-overview">
+      <div class="view-head">
+        <div>
+          <h2>Overview</h2>
+          <p>Everything the site has recorded, in one place.</p>
+        </div>
+        <button class="btn btn-secondary mono" id="refreshOverview">Refresh</button>
+      </div>
+
+      <div class="stat-grid">
+        <div class="stat-card"><div class="label">Total pageviews</div><div class="value" id="statViews">—</div></div>
+        <div class="stat-card"><div class="label">Unique visitors</div><div class="value" id="statVisitors">—</div></div>
+        <div class="stat-card"><div class="label">Total leads</div><div class="value" id="statLeads">—</div></div>
+        <div class="stat-card"><div class="label">View → lead rate</div><div class="value" id="statConv">—</div></div>
+      </div>
+
+      <div class="chart-row">
+        <div class="panel">
+          <h3>Traffic & leads — last 30 days</h3>
+          <canvas id="trafficChart" height="130"></canvas>
+        </div>
+        <div class="panel">
+          <h3>Leads by status</h3>
+          <canvas id="statusChart" height="130"></canvas>
+        </div>
+      </div>
+
+      <div class="chart-row">
+        <div class="panel">
+          <h3>Top pages</h3>
+          <table><thead><tr><th>Path</th><th>Views</th></tr></thead><tbody id="topPagesBody"></tbody></table>
+        </div>
+        <div class="panel">
+          <h3>Top referrers</h3>
+          <table><thead><tr><th>Referrer</th><th>Views</th></tr></thead><tbody id="topRefBody"></tbody></table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---------- LEADS ---------- -->
+    <section class="view" id="view-leads">
+      <div class="view-head">
+        <div>
+          <h2>Leads</h2>
+          <p>Every contact-form submission, with status tracking and notes.</p>
+        </div>
+        <button class="btn btn-secondary mono" id="refreshLeads">Refresh</button>
+      </div>
+      <div class="panel">
+        <table>
+          <thead>
+            <tr><th>Received</th><th>Name / contact</th><th>Business</th><th>Budget</th><th>Message</th><th>Status</th><th></th></tr>
+          </thead>
+          <tbody id="leadsBody"></tbody>
+        </table>
+        <div class="empty-state" id="leadsEmpty" style="display:none;">No leads yet — they'll show up here as soon as someone submits the contact form.</div>
+      </div>
+    </section>
+
+    <!-- ---------- PROJECTS ---------- -->
+    <section class="view" id="view-projects">
+      <div class="view-head">
+        <div>
+          <h2>Projects</h2>
+          <p>What's shown in the "Selected work" section of the public site.</p>
+        </div>
+        <button class="btn btn-primary" id="newProjectBtn">+ New project</button>
+      </div>
+
+      <div class="panel editor-toggle" id="projectForm" style="display:none;">
+        <h3 id="projectFormTitle">New project</h3>
+        <input type="hidden" id="projectId">
+        <div class="form-grid">
+          <div class="field"><label>Name</label><input id="pName" placeholder="Project name"></div>
+          <div class="field"><label>Slug</label><input id="pSlug" placeholder="url-friendly-id"></div>
+          <div class="field full"><label>Summary</label><textarea id="pSummary" placeholder="One or two sentences"></textarea></div>
+          <div class="field"><label>Status</label>
+            <select id="pStatus"><option value="live">Live</option><option value="in_progress">In progress</option><option value="archived">Archived</option></select>
+          </div>
+          <div class="field"><label>Year</label><input id="pYear" placeholder="2026"></div>
+          <div class="field"><label>Stack (comma-separated)</label><input id="pStack" placeholder="Node.js, Express, SQLite"></div>
+          <div class="field"><label>URL (optional)</label><input id="pUrl" placeholder="https://..."></div>
+          <div class="field"><label>Sort order</label><input id="pSort" type="number" value="0"></div>
+          <div class="field"><label>Visible</label>
+            <label class="field-check"><input type="checkbox" id="pVisible" checked> Show on public site</label>
+          </div>
+        </div>
+        <button class="btn btn-primary" id="saveProjectBtn">Save project</button>
+        <button class="btn btn-secondary" id="cancelProjectBtn">Cancel</button>
+      </div>
+
+      <div class="panel">
+        <table>
+          <thead><tr><th>Name</th><th>Status</th><th>Stack</th><th>Year</th><th>Visible</th><th></th></tr></thead>
+          <tbody id="projectsBody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ---------- SERVICES ---------- -->
+    <section class="view" id="view-services">
+      <div class="view-head">
+        <div>
+          <h2>Services</h2>
+          <p>What's shown in the "What we do" section of the public site.</p>
+        </div>
+        <button class="btn btn-primary" id="newServiceBtn">+ New service</button>
+      </div>
+
+      <div class="panel editor-toggle" id="serviceForm" style="display:none;">
+        <h3 id="serviceFormTitle">New service</h3>
+        <input type="hidden" id="serviceId">
+        <div class="form-grid">
+          <div class="field full"><label>Title</label><input id="sTitle" placeholder="Service name"></div>
+          <div class="field full"><label>Description</label><textarea id="sDescription" placeholder="What this service includes"></textarea></div>
+          <div class="field"><label>Sort order</label><input id="sSort" type="number" value="0"></div>
+          <div class="field"><label>Visible</label>
+            <label class="field-check"><input type="checkbox" id="sVisible" checked> Show on public site</label>
+          </div>
+        </div>
+        <button class="btn btn-primary" id="saveServiceBtn">Save service</button>
+        <button class="btn btn-secondary" id="cancelServiceBtn">Cancel</button>
+      </div>
+
+      <div class="panel">
+        <table>
+          <thead><tr><th>Title</th><th>Description</th><th>Visible</th><th></th></tr></thead>
+          <tbody id="servicesBody"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+</div>
+
+<script src="/admin/js/admin.js"></script>
+</body>
+</html>
