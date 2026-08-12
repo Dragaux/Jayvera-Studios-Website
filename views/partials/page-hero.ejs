@@ -1,0 +1,11 @@
+<section class="page-hero">
+  <div class="hero-grid" aria-hidden="true"></div>
+  <div class="wrap page-hero-inner">
+    <% if (typeof breadcrumb !== 'undefined' && breadcrumb) { %>
+      <div class="breadcrumb mono"><a href="/">Home</a> / <%= breadcrumb %></div>
+    <% } %>
+    <span class="eyebrow"><%= eyebrow %></span>
+    <h1><%- pageTitle %></h1>
+    <% if (typeof lede !== 'undefined' && lede) { %><p class="lede"><%= lede %></p><% } %>
+  </div>
+</section>

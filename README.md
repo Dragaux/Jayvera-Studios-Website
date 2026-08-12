@@ -1,24 +1,36 @@
 # Jayvera Studios
 
-Full-stack site for Jayvera Studios: a public marketing site plus a real admin
-backend — leads, projects, services, and analytics — all backed by SQLite,
-in the same style as the Evergray donor-management setup.
+Full-stack site for Jayvera Studios: a real multi-page public site — not a
+single scrolling HTML file — plus an admin backend for leads, projects,
+services, and analytics, all backed by SQLite, in the same style as the
+Evergray donor-management setup.
 
 ## What's included
 
-- **Public site** (`/`) — hero, services, work, about, FAQ, and a contact
-  form that writes straight into the database. Services and projects are
-  loaded from the API, not hardcoded, so editing them in the admin panel
-  updates the live site immediately.
+- **A real multi-page public site**, server-rendered with EJS, each with its
+  own URL:
+  - `/` — home, with a hero and previews of services and featured work
+  - `/about` — the studio's story, values, technology stack, and a timeline
+  - `/work` — every project, and `/work/:slug` for each one's own detail
+    page (problem → build → where it stands, plus a prev/next pager)
+  - `/services` — each service explained in full, not just a card
+  - `/contact` — the contact form, on its own page
+  - `/*` (anything else) — a proper 404 page
+
+  Projects and services are pulled from the database on every request, so
+  editing them in the admin panel updates the live pages immediately — none
+  of it is hardcoded into the HTML.
+
 - **Admin dashboard** (`/admin`) — key-protected panel with:
   - **Overview** — total pageviews, unique visitors, total leads, and
     view-to-lead conversion rate, plus a 30-day traffic/leads chart, a
     leads-by-status breakdown, and top pages / top referrers tables.
   - **Leads** — every contact-form submission, with inline status changes
     (new → contacted → quoted → won/lost) and delete.
-  - **Projects** — full CRUD for the "Selected work" cards (name, slug,
-    summary, status, stack, year, URL, visibility, sort order).
-  - **Services** — full CRUD for the "What we do" section.
+  - **Projects** — full CRUD for every project, including the problem /
+    solution / results copy that powers each project's own detail page
+    (name, slug, summary, status, stack, year, URL, visibility, sort order).
+  - **Services** — full CRUD for the services shown on `/services`.
 - **Built-in analytics** — a lightweight pageview tracker (no third-party
   script) logs every page load with path, referrer, and an anonymous
   cookie-based visitor id, so the Overview dashboard has real numbers.
@@ -46,9 +58,10 @@ npm start
 - Admin dashboard: http://localhost:3000/admin (enter your `ADMIN_KEY` to unlock)
 
 The database (`jayvera.db`) is created automatically on first run and seeded
-with the current three projects (Evergray, Durga Mandir volunteer platform,
-Vestista) and the three services already on the site, so the dashboard isn't
-empty on day one.
+with all six current projects (Clarivo, Evergray, Durga Mandir volunteer
+platform, Vestista, Skyward Dispatch, Stockalytica) and the three services
+already on the site, so the dashboard and every project page have real
+content on day one.
 
 ## Deploying
 
@@ -68,16 +81,20 @@ one, the database resets on every redeploy.
 ## Project structure
 
 ```
-server.js              Express app entry point
-db/index.js             SQLite schema, migrations-on-boot, and seed data
-middleware/adminAuth.js Checks the x-admin-key header against ADMIN_KEY
+server.js               Express app — page routes (EJS) + JSON API
+db/index.js              SQLite schema, migrations-on-boot, and seed data
+middleware/adminAuth.js  Checks the x-admin-key header against ADMIN_KEY
 middleware/trackVisit.js Logs pageviews for analytics
-routes/contact.js       POST /api/contact — public lead capture
-routes/projects.js      GET  /api/projects — public, visible projects only
-routes/services.js      GET  /api/services — public, visible services only
-routes/admin.js         All /api/admin/* routes — leads, projects, services, analytics
-public/index.html       Public site (fetches services/projects, posts the form)
-public/admin/index.html Admin dashboard (login gate + 4 views)
+routes/contact.js        POST /api/contact — public lead capture
+routes/projects.js       GET  /api/projects — public, visible projects only
+routes/services.js       GET  /api/services — public, visible services only
+routes/admin.js          All /api/admin/* routes — leads, projects, services, analytics
+views/partials/          Shared head, header/nav, footer, and page-hero banner
+views/pages/             home, about, work, project, services, contact, 404
+public/css/style.css     Shared stylesheet for every public page
+public/js/nav.js         Mobile nav toggle, shared across all pages
+public/js/contact.js     Contact form submission (used on /contact)
+public/admin/            Admin dashboard (login gate + 4 views) — unchanged SPA
 ```
 
 ## Notes
@@ -86,3 +103,4 @@ public/admin/index.html Admin dashboard (login gate + 4 views)
   involvement — this backend only handles leads and content, not invoicing.
 - The admin key is stored in the browser's `localStorage` after a successful
   login so you don't have to retype it every visit. "Lock dashboard" clears it.
+

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<%- include('../partials/head', { title: 'About', description: 'The story behind Jayvera Studios — a one-person, student-run web design studio in New Jersey.' }) %>
+</head>
+<body>
+<%- include('../partials/header', { active: 'about' }) %>
+
+<%- include('../partials/page-hero', {
+  eyebrow: 'About the studio',
+  pageTitle: 'A one-person studio that builds like a bigger one.',
+  lede: "The story, the values, and the stack behind every Jayvera Studios project.",
+  breadcrumb: 'About'
+}) %>
+
+<section class="about">
+  <div class="wrap about-grid">
+    <div class="about-visual">
+      <div class="row"><span class="mono">STUDIO</span><span>Jayvera Studios</span></div>
+      <div class="row"><span class="mono">FOUNDER</span><span>Jay</span></div>
+      <div class="row"><span class="mono">LOCATION</span><span>Franklin Township, NJ</span></div>
+      <div class="row"><span class="mono">TYPE</span><span>Student-run, solo developer</span></div>
+      <div class="row"><span class="mono">STACK</span><span>JS / Node / React</span></div>
+      <div class="row"><span class="mono">PROJECTS SHIPPED</span><span><%= projectCount %></span></div>
+      <div class="row"><span class="mono">CONTACT</span><span>teamjayvera@gmail.com</span></div>
+    </div>
+    <div class="about-copy">
+      <div class="fig"><span class="num">FIG. 01</span><span class="rule"></span><span class="label">Our story</span></div>
+      <h2 class="section-title" style="margin-bottom:22px;">Started with a simple observation.</h2>
+      <p>Jayvera Studios is run by Jay, a student developer based in Franklin Township, New Jersey. Every project — design, code, and deployment — is handled end to end, without outsourcing or templates.</p>
+      <p>The studio started with a simple observation: a lot of good local businesses and nonprofits are stuck with websites that don't represent them well. Jayvera exists to fix that — with real, working sites built specifically for the business behind them, not a generic template with a new logo dropped in.</p>
+      <p>What began as one small site turned into a habit of learning by building: each new project — a SaaS product, a nonprofit donor platform, a client lead-capture tool — meant picking up whatever was needed to ship it for real, then carrying those lessons into the next one. The result is a studio that works less like a hobby project and more like a small, serious engineering practice.</p>
+      <p>Because the studio is student-run, any project involving payments, billing, or contracts is handled with parental involvement — everything else, from first sketch to deployed product, is built and run independently.</p>
+      <div class="values">
+        <span>Built, not templated</span>
+        <span>Direct communication</span>
+        <span>Shipped, not just designed</span>
+        <span>Learn by building</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="tech" id="technology">
+  <div class="wrap">
+    <div class="fig"><span class="num">FIG. 02</span><span class="rule"></span><span class="label">Technology</span></div>
+    <h2 class="section-title" style="max-width:680px;margin-bottom:18px;">One core stack, reused and hardened across every build.</h2>
+    <p class="tech-lede">Every project starts from the same foundation established with Clarivo — proven pieces, not a new toolchain each time. That means less time relearning tools and more time on the actual problem.</p>
+    <div class="stack-grid">
+      <span>Node.js</span><span>Express</span><span>SQLite</span><span>React / Next.js</span>
+      <span>Stripe</span><span>OpenAI</span><span>Resend</span><span>Supabase</span>
+      <span>Railway</span><span>Cloudflare</span><span>GitHub</span><span>TypeScript</span>
+    </div>
+    <div class="philosophy">
+      <div class="philosophy-item">
+        <span class="idx mono">01</span>
+        <h3>Ship the real thing</h3>
+        <p>Every project on this site is deployed and working, not a static mockup — Evergray and Clarivo are both live right now.</p>
+      </div>
+      <div class="philosophy-item">
+        <span class="idx mono">02</span>
+        <h3>Reuse what works</h3>
+        <p>Node, Express, and SQLite show up in nearly every project because they're proven — new tools get adopted only when a project genuinely needs them.</p>
+      </div>
+      <div class="philosophy-item">
+        <span class="idx mono">03</span>
+        <h3>Build for the real constraint</h3>
+        <p>Stockalytica was deliberately reframed away from trade predictions; Vestista was renamed mid-build once the right name was clear. Decisions get revisited when they need to be.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="timeline" id="timeline">
+  <div class="wrap">
+    <div class="fig"><span class="num">FIG. 03</span><span class="rule"></span><span class="label">Timeline</span></div>
+    <h2 class="section-title" style="color:var(--paper);margin-bottom:44px;">How the studio got here.</h2>
+    <div class="timeline-list">
+      <div class="timeline-item">
+        <span class="timeline-year mono">2025</span>
+        <div><h3>Jayvera Studios founded</h3><p>Started as a one-person studio building real websites for local NJ businesses and nonprofits.</p></div>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-year mono">2026</span>
+        <div><h3>Clarivo launched</h3><p>An AI-powered decision intelligence SaaS at myclarivo.com — the project that established the core stack every build since has reused. Originally launched as DecisionVault.</p></div>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-year mono">2026</span>
+        <div><h3>Evergray shipped</h3><p>A nonprofit awareness site for senior shelter-pet adoption, connecting visitors with The Grey Muzzle Organization.</p></div>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-year mono">2026</span>
+        <div><h3>Client & platform work expands</h3><p>Vestista (Carbuyus), the Durga Mandir volunteer platform, Skyward Dispatch, and Stockalytica all move into active development.</p></div>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-year mono">Next</span>
+        <div><h3>More builds, same foundation</h3><p>Continuing to take on local business and nonprofit projects, one shipped product at a time.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="wrap cta-band-inner">
+    <div>
+      <div class="fig"><span class="num">FIG. 04</span><span class="rule"></span><span class="label">See it in practice</span></div>
+      <h2 class="section-title">Curious what this looks like in an actual project?</h2>
+      <p class="lede-dark">Browse the full list of shipped and in-progress work.</p>
+    </div>
+    <div class="cta-band-links">
+      <a href="/work" class="btn btn-secondary-navy">View the work</a>
+      <a href="/contact" class="btn btn-primary">Start a project →</a>
+    </div>
+  </div>
+</section>
+
+<%- include('../partials/footer') %>
+</body>
+</html>

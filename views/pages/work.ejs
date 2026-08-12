@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<%- include('../partials/head', { title: 'Work', description: 'Every project Jayvera Studios has shipped or is building — client work and independent builds alike.' }) %>
+</head>
+<body>
+<%- include('../partials/header', { active: 'work' }) %>
+
+<%- include('../partials/page-hero', {
+  eyebrow: 'Selected work',
+  pageTitle: 'Projects we\'ve built.',
+  lede: 'A mix of client work and independent builds — each one a real, deployed product, not a mockup. Click into any project for the full story.',
+  breadcrumb: 'Work'
+}) %>
+
+<section class="work-index">
+  <div class="wrap">
+    <div class="card-grid card-grid-light">
+      <% projects.forEach((p) => { %>
+        <a href="/work/<%= p.slug %>" class="card card-light">
+          <span class="status mono status-<%= p.status %>"><%= p.status === 'live' ? '● Live' : p.status === 'in_progress' ? '● In progress' : '● Archived' %></span>
+          <h3><%= p.name %></h3>
+          <p><%= p.summary %></p>
+          <div class="tags"><% p.stack.split(',').filter(Boolean).forEach((t) => { %><span><%= t %></span><% }) %></div>
+          <span class="card-cta mono">View project →</span>
+        </a>
+      <% }) %>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="wrap cta-band-inner">
+    <div>
+      <div class="fig"><span class="num">FIG. 02</span><span class="rule"></span><span class="label">Get started</span></div>
+      <h2 class="section-title">Want something like this for your business?</h2>
+      <p class="lede-dark">Every project here started as a first conversation.</p>
+    </div>
+    <div class="cta-band-links">
+      <a href="/contact" class="btn btn-primary">Start a project →</a>
+    </div>
+  </div>
+</section>
+
+<%- include('../partials/footer') %>
+</body>
+</html>

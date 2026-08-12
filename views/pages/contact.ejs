@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<%- include('../partials/head', { title: 'Contact', description: 'Start a project with Jayvera Studios — tell us about your business and what you need.' }) %>
+</head>
+<body>
+<%- include('../partials/header', { active: 'contact' }) %>
+
+<section class="page-hero contact-page-hero">
+  <div class="hero-grid" aria-hidden="true"></div>
+  <div class="wrap page-hero-inner">
+    <div class="breadcrumb mono"><a href="/">Home</a> / Contact</div>
+    <span class="eyebrow">Get started</span>
+    <h1>Have a business or project that needs a real website?</h1>
+    <p class="lede">Fill out the form and it goes straight into our project tracker — we'll follow up with next steps.</p>
+    <p class="contact-alt">Prefer email? Write to <a href="mailto:teamjayvera@gmail.com">teamjayvera@gmail.com</a></p>
+  </div>
+</section>
+
+<section class="contact-form-section">
+  <div class="wrap">
+    <form class="contact-form" id="contactForm">
+      <div class="form-row">
+        <div class="form-field">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" placeholder="Your name" required>
+        </div>
+        <div class="form-field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="you@business.com" required>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-field">
+          <label for="business">Business / organization</label>
+          <input type="text" id="business" name="business" placeholder="Optional">
+        </div>
+        <div class="form-field">
+          <label for="budget">Rough budget</label>
+          <select id="budget" name="budget">
+            <option value="">Not sure yet</option>
+            <option value="Under $500">Under $500</option>
+            <option value="$500–$1,500">$500–$1,500</option>
+            <option value="$1,500–$5,000">$1,500–$5,000</option>
+            <option value="Let's discuss">Let's discuss</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-field">
+        <label for="message">What do you need?</label>
+        <textarea id="message" name="message" placeholder="Tell us about your business and what you're looking for..." required></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary" id="submitBtn">Send message</button>
+      <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
+    </form>
+  </div>
+</section>
+
+<%- include('../partials/footer') %>
+<script src="/js/contact.js"></script>
+</body>
+</html>

@@ -67,13 +67,16 @@ router.post('/projects', (req, res) => {
   try {
     const result = db
       .prepare(`
-        INSERT INTO projects (slug, name, summary, status, stack, year, url, featured, visible, sort_order)
-        VALUES (@slug, @name, @summary, @status, @stack, @year, @url, @featured, @visible, @sort_order)
+        INSERT INTO projects (slug, name, summary, problem, solution, results, status, stack, year, url, featured, visible, sort_order)
+        VALUES (@slug, @name, @summary, @problem, @solution, @results, @status, @stack, @year, @url, @featured, @visible, @sort_order)
       `)
       .run({
         slug: p.slug,
         name: p.name,
         summary: p.summary,
+        problem: p.problem || '',
+        solution: p.solution || '',
+        results: p.results || '',
         status: p.status || 'in_progress',
         stack: p.stack || '',
         year: p.year || '',
@@ -93,7 +96,8 @@ router.put('/projects/:id', (req, res) => {
   const result = db
     .prepare(`
       UPDATE projects SET
-        slug = @slug, name = @name, summary = @summary, status = @status,
+        slug = @slug, name = @name, summary = @summary, problem = @problem,
+        solution = @solution, results = @results, status = @status,
         stack = @stack, year = @year, url = @url, featured = @featured,
         visible = @visible, sort_order = @sort_order, updated_at = datetime('now')
       WHERE id = @id
@@ -103,6 +107,9 @@ router.put('/projects/:id', (req, res) => {
       slug: p.slug,
       name: p.name,
       summary: p.summary,
+      problem: p.problem || '',
+      solution: p.solution || '',
+      results: p.results || '',
       status: p.status || 'in_progress',
       stack: p.stack || '',
       year: p.year || '',

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<%- include('../partials/head', { title: 'Web design & software studio', description: 'Jayvera Studios designs and builds real, working websites and tools for small businesses and nonprofits in New Jersey.' }) %>
+</head>
+<body>
+<%- include('../partials/header', { active: 'home' }) %>
+
+<section class="hero" id="top">
+  <div class="hero-grid" aria-hidden="true"></div>
+  <div class="wrap hero-inner">
+    <span class="eyebrow">Web design & software studio · New Jersey</span>
+    <h1>We build websites that <em>actually work</em> for the businesses that need them.</h1>
+    <p class="lede">Jayvera Studios designs and builds real, working sites and tools for small businesses and nonprofits — from the first sketch to the deployed product.</p>
+    <div class="hero-ctas">
+      <a href="/work" class="btn btn-primary">View the work</a>
+      <a href="/contact" class="btn btn-ghost">Start a project →</a>
+    </div>
+  </div>
+  <div class="hero-specs">
+    <div class="wrap">
+      <span><strong>Founded</strong> 2025</span>
+      <span><strong>Based in</strong> Somerset County, NJ</span>
+      <span><strong>Studio size</strong> Solo — one founder, full stack</span>
+      <span><strong>Focus</strong> Local business & nonprofit websites</span>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="fig"><span class="num">FIG. 01</span><span class="rule"></span><span class="label">What we do</span></div>
+    <h2 class="section-title">Three ways we help a business look and work like it means it.</h2>
+    <div class="service-grid">
+      <% services.forEach((s, i) => { %>
+        <div class="service">
+          <span class="idx mono"><%= String(i + 1).padStart(2, '0') %></span>
+          <h3><%= s.title %></h3>
+          <p><%= s.description %></p>
+        </div>
+      <% }) %>
+    </div>
+    <a href="/services" class="text-link">See all services in detail →</a>
+  </div>
+</section>
+
+<section class="work" id="work">
+  <div class="wrap">
+    <div class="fig"><span class="num">FIG. 02</span><span class="rule"></span><span class="label">Selected work</span></div>
+    <h2 class="section-title" style="color:var(--paper);">Projects we've shipped.</h2>
+    <p class="work-lede">A mix of client work and independent builds — each one a real, deployed product, not a mockup.</p>
+    <div class="card-grid">
+      <% projects.slice(0, 3).forEach((p) => { %>
+        <a href="/work/<%= p.slug %>" class="card">
+          <span class="status mono"><%= p.status === 'live' ? '● Live' : p.status === 'in_progress' ? '● In progress' : '● Archived' %></span>
+          <h3><%= p.name %></h3>
+          <p><%= p.summary %></p>
+          <div class="tags"><% p.stack.split(',').filter(Boolean).forEach((t) => { %><span><%= t %></span><% }) %></div>
+        </a>
+      <% }) %>
+    </div>
+    <a href="/work" class="text-link text-link-light">See all <%= projects.length %> projects →</a>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="wrap cta-band-inner">
+    <div>
+      <div class="fig"><span class="num">FIG. 03</span><span class="rule"></span><span class="label">Get started</span></div>
+      <h2 class="section-title">Have a business or project that needs a real website?</h2>
+      <p class="lede-dark">Read more about the studio, browse the full project list, or go straight to the contact form.</p>
+    </div>
+    <div class="cta-band-links">
+      <a href="/about" class="btn btn-secondary-navy">About the studio</a>
+      <a href="/contact" class="btn btn-primary">Start a project →</a>
+    </div>
+  </div>
+</section>
+
+<%- include('../partials/footer') %>
+</body>
+</html>

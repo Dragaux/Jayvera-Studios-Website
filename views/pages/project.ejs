@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<%- include('../partials/head', { title: project.name, description: project.summary }) %>
+</head>
+<body>
+<%- include('../partials/header', { active: 'work' }) %>
+
+<section class="page-hero project-hero">
+  <div class="hero-grid" aria-hidden="true"></div>
+  <div class="wrap page-hero-inner">
+    <div class="breadcrumb mono"><a href="/">Home</a> / <a href="/work">Work</a> / <%= project.name %></div>
+    <span class="eyebrow status-eyebrow status-<%= project.status %>"><%= project.status === 'live' ? '● Live' : project.status === 'in_progress' ? '● In progress' : '● Archived' %></span>
+    <h1><%= project.name %></h1>
+    <p class="lede"><%= project.summary %></p>
+    <% if (project.url) { %>
+      <div class="hero-ctas"><a href="<%= project.url %>" target="_blank" rel="noopener" class="btn btn-primary">Visit live site →</a></div>
+    <% } %>
+  </div>
+  <div class="hero-specs">
+    <div class="wrap">
+      <span><strong>Year</strong> <%= project.year || '—' %></span>
+      <span><strong>Status</strong> <%= project.status.replace('_', ' ') %></span>
+      <span><strong>Stack</strong> <%= project.stack || '—' %></span>
+    </div>
+  </div>
+</section>
+
+<section class="project-detail">
+  <div class="wrap project-detail-grid">
+    <div class="project-body">
+      <% if (project.problem) { %>
+        <div class="project-block">
+          <div class="fig"><span class="num">01</span><span class="rule"></span><span class="label">The problem</span></div>
+          <p><%= project.problem %></p>
+        </div>
+      <% } %>
+      <% if (project.solution) { %>
+        <div class="project-block">
+          <div class="fig"><span class="num">02</span><span class="rule"></span><span class="label">The build</span></div>
+          <p><%= project.solution %></p>
+        </div>
+      <% } %>
+      <% if (project.results) { %>
+        <div class="project-block">
+          <div class="fig"><span class="num">03</span><span class="rule"></span><span class="label">Where it stands</span></div>
+          <p><%= project.results %></p>
+        </div>
+      <% } %>
+    </div>
+    <aside class="project-sidebar">
+      <div class="about-visual">
+        <div class="row"><span class="mono">PROJECT</span><span><%= project.name %></span></div>
+        <div class="row"><span class="mono">STATUS</span><span><%= project.status.replace('_', ' ') %></span></div>
+        <div class="row"><span class="mono">YEAR</span><span><%= project.year || '—' %></span></div>
+        <div class="row"><span class="mono">STACK</span><span style="text-align:right;"><%= project.stack ? project.stack.split(',').join(', ') : '—' %></span></div>
+        <% if (project.url) { %><div class="row"><span class="mono">LINK</span><span><a href="<%= project.url %>" target="_blank" rel="noopener">Visit site ↗</a></span></div><% } %>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<nav class="project-pager">
+  <div class="wrap project-pager-inner">
+    <% if (prevProject) { %>
+      <a href="/work/<%= prevProject.slug %>" class="pager-link">
+        <span class="mono">← Previous</span><strong><%= prevProject.name %></strong>
+      </a>
+    <% } else { %><span></span><% } %>
+    <% if (nextProject) { %>
+      <a href="/work/<%= nextProject.slug %>" class="pager-link pager-link-right">
+        <span class="mono">Next →</span><strong><%= nextProject.name %></strong>
+      </a>
+    <% } %>
+  </div>
+</nav>
+
+<%- include('../partials/footer') %>
+</body>
+</html>

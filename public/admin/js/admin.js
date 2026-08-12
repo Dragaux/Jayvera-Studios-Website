@@ -275,6 +275,9 @@ function openProjectForm(p) {
   document.getElementById('pName').value = p ? p.name : '';
   document.getElementById('pSlug').value = p ? p.slug : '';
   document.getElementById('pSummary').value = p ? p.summary : '';
+  document.getElementById('pProblem').value = p ? p.problem || '' : '';
+  document.getElementById('pSolution').value = p ? p.solution || '' : '';
+  document.getElementById('pResults').value = p ? p.results || '' : '';
   document.getElementById('pStatus').value = p ? p.status : 'in_progress';
   document.getElementById('pYear').value = p ? p.year || '' : '';
   document.getElementById('pStack').value = p ? p.stack || '' : '';
@@ -293,6 +296,9 @@ document.getElementById('saveProjectBtn').addEventListener('click', async () => 
     name: document.getElementById('pName').value.trim(),
     slug: document.getElementById('pSlug').value.trim(),
     summary: document.getElementById('pSummary').value.trim(),
+    problem: document.getElementById('pProblem').value.trim(),
+    solution: document.getElementById('pSolution').value.trim(),
+    results: document.getElementById('pResults').value.trim(),
     status: document.getElementById('pStatus').value,
     year: document.getElementById('pYear').value.trim(),
     stack: document.getElementById('pStack').value.trim(),
