@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<%- include('../partials/head', { title: 'Contact', description: 'Start a project with Jayvera Studios — tell us about your business and what you need.' }) %>
+<%- include('../partials/head', { title: 'Contact', description: 'Start a project with Jayvera Studios — tell us about your business and what you need.', site }) %>
 </head>
 <body>
-<%- include('../partials/header', { active: 'contact' }) %>
+<%- include('../partials/header', { active: 'contact', site }) %>
 
 <section class="page-hero contact-page-hero">
   <div class="hero-grid" aria-hidden="true"></div>
   <div class="wrap page-hero-inner">
-    <div class="breadcrumb mono"><a href="/">Home</a> / Contact</div>
+    <div class="breadcrumb mono"><a href="<%= site.links.home %>">Home</a> / Contact</div>
     <span class="eyebrow">Get started</span>
     <h1>Have a business or project that needs a real website?</h1>
-    <p class="lede">Fill out the form and it goes straight into our project tracker — we'll follow up with next steps.</p>
+    <p class="lede"><% if (site.hasBackend) { %>Fill out the form and it goes straight into our project tracker — we'll follow up with next steps.<% } else { %>Fill out the form and it opens a pre-filled email — just hit send from your own inbox.<% } %></p>
     <p class="contact-alt">Prefer email? Write to <a href="mailto:teamjayvera@gmail.com">teamjayvera@gmail.com</a></p>
   </div>
 </section>
@@ -56,7 +56,7 @@
   </div>
 </section>
 
-<%- include('../partials/footer') %>
-<script src="/js/contact.js"></script>
+<%- include('../partials/footer', { site }) %>
+<script src="<%= site.contactJs %>"></script>
 </body>
 </html>

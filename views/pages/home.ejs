@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<%- include('../partials/head', { title: 'Web design & software studio', description: 'Jayvera Studios designs and builds real, working websites and tools for small businesses and nonprofits in New Jersey.' }) %>
+<%- include('../partials/head', { title: 'Web design & software studio', description: 'Jayvera Studios designs and builds real, working websites and tools for small businesses and nonprofits in New Jersey.', site }) %>
 </head>
 <body>
-<%- include('../partials/header', { active: 'home' }) %>
+<%- include('../partials/header', { active: 'home', site }) %>
 
 <section class="hero" id="top">
   <div class="hero-grid" aria-hidden="true"></div>
@@ -13,8 +13,8 @@
     <h1>We build websites that <em>actually work</em> for the businesses that need them.</h1>
     <p class="lede">Jayvera Studios designs and builds real, working sites and tools for small businesses and nonprofits — from the first sketch to the deployed product.</p>
     <div class="hero-ctas">
-      <a href="/work" class="btn btn-primary">View the work</a>
-      <a href="/contact" class="btn btn-ghost">Start a project →</a>
+      <a href="<%= site.links.work %>" class="btn btn-primary">View the work</a>
+      <a href="<%= site.links.contact %>" class="btn btn-ghost">Start a project →</a>
     </div>
   </div>
   <div class="hero-specs">
@@ -40,7 +40,7 @@
         </div>
       <% }) %>
     </div>
-    <a href="/services" class="text-link">See all services in detail →</a>
+    <a href="<%= site.links.services %>" class="text-link">See all services in detail →</a>
   </div>
 </section>
 
@@ -51,7 +51,7 @@
     <p class="work-lede">A mix of client work and independent builds — each one a real, deployed product, not a mockup.</p>
     <div class="card-grid">
       <% projects.slice(0, 3).forEach((p) => { %>
-        <a href="/work/<%= p.slug %>" class="card">
+        <a href="<%= site.links.project(p.slug) %>" class="card">
           <span class="status mono"><%= p.status === 'live' ? '● Live' : p.status === 'in_progress' ? '● In progress' : '● Archived' %></span>
           <h3><%= p.name %></h3>
           <p><%= p.summary %></p>
@@ -59,7 +59,7 @@
         </a>
       <% }) %>
     </div>
-    <a href="/work" class="text-link text-link-light">See all <%= projects.length %> projects →</a>
+    <a href="<%= site.links.work %>" class="text-link text-link-light">See all <%= projects.length %> projects →</a>
   </div>
 </section>
 
@@ -71,12 +71,12 @@
       <p class="lede-dark">Read more about the studio, browse the full project list, or go straight to the contact form.</p>
     </div>
     <div class="cta-band-links">
-      <a href="/about" class="btn btn-secondary-navy">About the studio</a>
-      <a href="/contact" class="btn btn-primary">Start a project →</a>
+      <a href="<%= site.links.about %>" class="btn btn-secondary-navy">About the studio</a>
+      <a href="<%= site.links.contact %>" class="btn btn-primary">Start a project →</a>
     </div>
   </div>
 </section>
 
-<%- include('../partials/footer') %>
+<%- include('../partials/footer', { site }) %>
 </body>
 </html>

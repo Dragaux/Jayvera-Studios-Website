@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<%- include('../partials/head', { title: 'Services', description: 'What Jayvera Studios builds — web design and development, custom tools and automation, and nonprofit or community platforms.' }) %>
+<%- include('../partials/head', { title: 'Services', description: 'What Jayvera Studios builds — web design and development, custom tools and automation, and nonprofit or community platforms.', site }) %>
 </head>
 <body>
-<%- include('../partials/header', { active: 'services' }) %>
+<%- include('../partials/header', { active: 'services', site }) %>
 
 <%- include('../partials/page-hero', {
   eyebrow: 'What we do',
   pageTitle: 'Three ways we help a business look and work like it means it.',
   lede: 'Every engagement starts with a conversation about what the business actually needs — these are the shapes that conversation usually takes.',
-  breadcrumb: 'Services'
+  breadcrumb: 'Services',
+  site
 }) %>
 
 <section class="services-detail">
@@ -35,11 +36,11 @@
       <p class="lede-dark">That's what the first conversation is for — tell us what you're working with.</p>
     </div>
     <div class="cta-band-links">
-      <a href="/contact" class="btn btn-primary">Start a project →</a>
+      <a href="<%= site.links.contact %>" class="btn btn-primary">Start a project →</a>
     </div>
   </div>
 </section>
 
-<%- include('../partials/footer') %>
+<%- include('../partials/footer', { site }) %>
 </body>
 </html>

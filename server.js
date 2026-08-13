@@ -5,6 +5,7 @@ const cors = require('cors');
 const cookieParser = require('cookie-parser');
 
 const db = require('./db'); // initializes schema + seed data on first run
+const { SERVER_SITE } = require('./site-config');
 
 const trackVisit = require('./middleware/trackVisit');
 const contactRoute = require('./routes/contact');
@@ -33,13 +34,15 @@ app.use('/api/admin', adminRoute);
 app.use(express.static(path.join(__dirname, 'public')));
 
 // ---------------------------------------------------------------------------
-// Server-rendered pages
+// Server-rendered pages — real routes (/about, /work/:slug, ...), each a
+// full page load, not an anchor jump on one long page.
 // ---------------------------------------------------------------------------
 const getVisibleProjects = db.prepare('SELECT * FROM projects WHERE visible = 1 ORDER BY sort_order ASC, id ASC');
 const getVisibleServices = db.prepare('SELECT * FROM services WHERE visible = 1 ORDER BY sort_order ASC, id ASC');
 
 app.get('/', (req, res) => {
   res.render('pages/home', {
+    site: SERVER_SITE,
     projects: getVisibleProjects.all(),
     services: getVisibleServices.all()
   });
@@ -47,12 +50,14 @@ app.get('/', (req, res) => {
 
 app.get('/about', (req, res) => {
   res.render('pages/about', {
+    site: SERVER_SITE,
     projectCount: getVisibleProjects.all().length
   });
 });
 
 app.get('/work', (req, res) => {
   res.render('pages/work', {
+    site: SERVER_SITE,
     projects: getVisibleProjects.all()
   });
 });
@@ -60,9 +65,10 @@ app.get('/work', (req, res) => {
 app.get('/work/:slug', (req, res) => {
   const projects = getVisibleProjects.all();
   const index = projects.findIndex((p) => p.slug === req.params.slug);
-  if (index === -1) return res.status(404).render('pages/404');
+  if (index === -1) return res.status(404).render('pages/404', { site: SERVER_SITE });
 
   res.render('pages/project', {
+    site: SERVER_SITE,
     project: projects[index],
     prevProject: index > 0 ? projects[index - 1] : null,
     nextProject: index < projects.length - 1 ? projects[index + 1] : null
@@ -71,12 +77,13 @@ app.get('/work/:slug', (req, res) => {
 
 app.get('/services', (req, res) => {
   res.render('pages/services', {
+    site: SERVER_SITE,
     services: getVisibleServices.all()
   });
 });
 
 app.get('/contact', (req, res) => {
-  res.render('pages/contact');
+  res.render('pages/contact', { site: SERVER_SITE });
 });
 
 app.get('/admin', (req, res) => {
@@ -84,7 +91,7 @@ app.get('/admin', (req, res) => {
 });
 
 app.use((req, res) => {
-  res.status(404).render('pages/404');
+  res.status(404).render('pages/404', { site: SERVER_SITE });
 });
 
 const PORT = process.env.PORT || 3000;

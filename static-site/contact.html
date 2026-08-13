@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Jayvera Studios</title>
+<meta name="description" content="Start a project with Jayvera Studios — tell us about your business and what you need.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+<header>
+  <nav class="wrap">
+    <a href="index.html" class="brand"><span class="mark"></span>Jayvera Studios</a>
+    <button class="navToggle" id="navToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    <div class="navlinks" id="navlinks">
+      <a href="work.html" class="">Work</a>
+      <a href="services.html" class="">Services</a>
+      <a href="about.html" class="">About</a>
+      <a href="contact.html" class="cta">Start a project</a>
+    </div>
+  </nav>
+</header>
+
+
+<section class="page-hero contact-page-hero">
+  <div class="hero-grid" aria-hidden="true"></div>
+  <div class="wrap page-hero-inner">
+    <div class="breadcrumb mono"><a href="index.html">Home</a> / Contact</div>
+    <span class="eyebrow">Get started</span>
+    <h1>Have a business or project that needs a real website?</h1>
+    <p class="lede">Fill out the form and it opens a pre-filled email — just hit send from your own inbox.</p>
+    <p class="contact-alt">Prefer email? Write to <a href="mailto:teamjayvera@gmail.com">teamjayvera@gmail.com</a></p>
+  </div>
+</section>
+
+<section class="contact-form-section">
+  <div class="wrap">
+    <form class="contact-form" id="contactForm">
+      <div class="form-row">
+        <div class="form-field">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" placeholder="Your name" required>
+        </div>
+        <div class="form-field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="you@business.com" required>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-field">
+          <label for="business">Business / organization</label>
+          <input type="text" id="business" name="business" placeholder="Optional">
+        </div>
+        <div class="form-field">
+          <label for="budget">Rough budget</label>
+          <select id="budget" name="budget">
+            <option value="">Not sure yet</option>
+            <option value="Under $500">Under $500</option>
+            <option value="$500–$1,500">$500–$1,500</option>
+            <option value="$1,500–$5,000">$1,500–$5,000</option>
+            <option value="Let's discuss">Let's discuss</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-field">
+        <label for="message">What do you need?</label>
+        <textarea id="message" name="message" placeholder="Tell us about your business and what you're looking for..." required></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary" id="submitBtn">Send message</button>
+      <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="brand" style="color:var(--paper);margin-bottom:14px;display:inline-flex;">
+          <span class="mark" style="border-color:var(--line-cyan);"></span>Jayvera Studios
+        </a>
+        <p>A student-run web design studio based in Franklin Township, New Jersey — building real websites for real businesses.</p>
+      </div>
+      <div>
+        <h4>Studio</h4>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="about.html#technology">Technology</a></li>
+          <li><a href="about.html#timeline">Timeline</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="work.html">Work</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Live projects</h4>
+        <ul>
+          <li><a href="https://myclarivo.com" target="_blank" rel="noopener">Clarivo</a></li>
+          <li><a href="https://evergray.up.railway.app" target="_blank" rel="noopener">Evergray</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="mailto:teamjayvera@gmail.com">Email</a></li>
+          <li><a href="https://github.com/Dragaux" target="_blank" rel="noopener">GitHub</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Jayvera Studios. All rights reserved.</span>
+      <span>Designed & built by Jay</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/nav.js"></script>
+
+<script src="js/contact-static.js"></script>
+</body>
+</html>

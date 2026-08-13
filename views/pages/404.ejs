@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<%- include('../partials/head', { title: 'Page not found', description: 'This page does not exist.' }) %>
+<%- include('../partials/head', { title: 'Page not found', description: 'This page does not exist.', site }) %>
 </head>
 <body>
-<%- include('../partials/header', { active: '' }) %>
+<%- include('../partials/header', { active: '', site }) %>
 
 <section class="page-hero">
   <div class="hero-grid" aria-hidden="true"></div>
@@ -13,12 +13,12 @@
     <h1>That page doesn't exist.</h1>
     <p class="lede">The link might be old, or the project may have moved. Try the work index or head back home.</p>
     <div class="hero-ctas">
-      <a href="/work" class="btn btn-primary">View the work</a>
-      <a href="/" class="btn btn-ghost">Back home</a>
+      <a href="<%= site.links.work %>" class="btn btn-primary">View the work</a>
+      <a href="<%= site.links.home %>" class="btn btn-ghost">Back home</a>
     </div>
   </div>
 </section>
 
-<%- include('../partials/footer') %>
+<%- include('../partials/footer', { site }) %>
 </body>
 </html>

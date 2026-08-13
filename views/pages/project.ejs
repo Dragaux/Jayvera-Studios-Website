@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<%- include('../partials/head', { title: project.name, description: project.summary }) %>
+<%- include('../partials/head', { title: project.name, description: project.summary, site }) %>
 </head>
 <body>
-<%- include('../partials/header', { active: 'work' }) %>
+<%- include('../partials/header', { active: 'work', site }) %>
 
 <section class="page-hero project-hero">
   <div class="hero-grid" aria-hidden="true"></div>
   <div class="wrap page-hero-inner">
-    <div class="breadcrumb mono"><a href="/">Home</a> / <a href="/work">Work</a> / <%= project.name %></div>
+    <div class="breadcrumb mono"><a href="<%= site.links.home %>">Home</a> / <a href="<%= site.links.work %>">Work</a> / <%= project.name %></div>
     <span class="eyebrow status-eyebrow status-<%= project.status %>"><%= project.status === 'live' ? '● Live' : project.status === 'in_progress' ? '● In progress' : '● Archived' %></span>
     <h1><%= project.name %></h1>
     <p class="lede"><%= project.summary %></p>
@@ -63,18 +63,18 @@
 <nav class="project-pager">
   <div class="wrap project-pager-inner">
     <% if (prevProject) { %>
-      <a href="/work/<%= prevProject.slug %>" class="pager-link">
+      <a href="<%= site.links.project(prevProject.slug) %>" class="pager-link">
         <span class="mono">← Previous</span><strong><%= prevProject.name %></strong>
       </a>
     <% } else { %><span></span><% } %>
     <% if (nextProject) { %>
-      <a href="/work/<%= nextProject.slug %>" class="pager-link pager-link-right">
+      <a href="<%= site.links.project(nextProject.slug) %>" class="pager-link pager-link-right">
         <span class="mono">Next →</span><strong><%= nextProject.name %></strong>
       </a>
     <% } %>
   </div>
 </nav>
 
-<%- include('../partials/footer') %>
+<%- include('../partials/footer', { site }) %>
 </body>
 </html>
