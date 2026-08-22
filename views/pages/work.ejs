@@ -6,20 +6,74 @@
 <body>
 <%- include('../partials/header', { active: 'work', site }) %>
 
-<%- include('../partials/page-hero', {
-  eyebrow: 'Selected work',
-  pageTitle: 'Projects we\'ve built.',
-  lede: 'A mix of client work and independent builds — each one a real, deployed product, not a mockup. Click into any project for the full story.',
-  breadcrumb: 'Work',
-  site
-}) %>
+<%
+  const statusLabel = (s) => s === 'live' ? '● Live' : s === 'in_progress' ? '● In progress' : '● Archived';
+  const featured = projects[0];
+  const secondary = projects[1];
+  const rest = projects.slice(2);
+  const liveCount = projects.filter(p => p.status === 'live').length;
+%>
 
+<section class="work-hero">
+  <div class="hero-grid" aria-hidden="true"></div>
+  <div class="wrap work-hero-inner">
+    <div class="breadcrumb mono"><a href="<%= site.links.home %>">Home</a> / Work</div>
+    <span class="eyebrow">Selected work</span>
+    <h1>Work that ships.</h1>
+    <p class="lede">Real products. Real businesses. Real users. We don't make mockups — we build things people actually use, from the first sketch to a deployed URL.</p>
+  </div>
+</section>
+
+<% if (featured) { %>
+<section class="featured-work">
+  <div class="wrap">
+    <div class="fig"><span class="num">FIG. 01</span><span class="rule"></span><span class="label">Featured</span></div>
+    <a href="<%= site.links.project(featured.slug) %>" class="feature-card feature-card-huge">
+      <div class="feature-visual">
+        <span class="placeholder-label mono">Screenshot — <%= featured.name %></span>
+      </div>
+      <div class="feature-meta">
+        <span class="feature-index mono status-<%= featured.status %>"><%= statusLabel(featured.status) %></span>
+        <h2><%= featured.name %></h2>
+        <p><%= featured.summary %></p>
+        <div class="tags"><% featured.stack.split(',').filter(Boolean).forEach((t) => { %><span><%= t %></span><% }) %></div>
+        <span class="card-cta mono">Explore case study →</span>
+      </div>
+    </a>
+  </div>
+</section>
+<% } %>
+
+<% if (secondary) { %>
+<section class="featured-work featured-work-alt">
+  <div class="wrap">
+    <a href="<%= site.links.project(secondary.slug) %>" class="feature-card feature-card-large">
+      <div class="feature-visual">
+        <span class="placeholder-label mono">Screenshot — <%= secondary.name %></span>
+      </div>
+      <div class="feature-meta">
+        <span class="feature-index mono status-<%= secondary.status %>"><%= statusLabel(secondary.status) %></span>
+        <h2><%= secondary.name %></h2>
+        <p><%= secondary.summary %></p>
+        <div class="tags"><% secondary.stack.split(',').filter(Boolean).forEach((t) => { %><span><%= t %></span><% }) %></div>
+        <span class="card-cta mono">Explore case study →</span>
+      </div>
+    </a>
+  </div>
+</section>
+<% } %>
+
+<% if (rest.length) { %>
 <section class="work-index">
   <div class="wrap">
-    <div class="card-grid card-grid-light">
-      <% projects.forEach((p) => { %>
-        <a href="<%= site.links.project(p.slug) %>" class="card card-light">
-          <span class="status mono status-<%= p.status %>"><%= p.status === 'live' ? '● Live' : p.status === 'in_progress' ? '● In progress' : '● Archived' %></span>
+    <div class="fig"><span class="num">FIG. 02</span><span class="rule"></span><span class="label">More work</span></div>
+    <div class="staggered-grid">
+      <% rest.forEach((p) => { %>
+        <a href="<%= site.links.project(p.slug) %>" class="card card-light card-staggered">
+          <div class="feature-visual feature-visual-small">
+            <span class="placeholder-label mono">Screenshot — <%= p.name %></span>
+          </div>
+          <span class="status mono status-<%= p.status %>"><%= statusLabel(p.status) %></span>
           <h3><%= p.name %></h3>
           <p><%= p.summary %></p>
           <div class="tags"><% p.stack.split(',').filter(Boolean).forEach((t) => { %><span><%= t %></span><% }) %></div>
@@ -29,11 +83,47 @@
     </div>
   </div>
 </section>
+<% } %>
+
+<section class="capabilities">
+  <div class="wrap">
+    <div class="fig"><span class="num">FIG. 03</span><span class="rule"></span><span class="label">We build</span></div>
+    <div class="capabilities-grid">
+      <span>Websites</span><span>SaaS</span>
+      <span>Dashboards</span><span>AI products</span>
+      <span>Internal tools</span><span>E-commerce</span>
+      <span>Web apps</span><span>Automation</span>
+    </div>
+    <p class="capabilities-note">From a landing page to a full-scale product — same studio, same process.</p>
+  </div>
+</section>
+
+<section class="stats-strip">
+  <div class="wrap stats-grid">
+    <div class="stat-item"><span class="stat-num mono"><%= projects.length %></span><span class="stat-label mono">Products shipped</span></div>
+    <div class="stat-item"><span class="stat-num mono"><%= liveCount %></span><span class="stat-label mono">Live right now</span></div>
+    <div class="stat-item"><span class="stat-num mono">1</span><span class="stat-label mono">Person building all of it</span></div>
+  </div>
+</section>
+
+<section class="why-jayvera">
+  <div class="wrap">
+    <div class="fig"><span class="num">FIG. 04</span><span class="rule"></span><span class="label">Why Jayvera</span></div>
+    <h2 class="section-title" style="color:var(--paper);">Small studio. Serious builds.</h2>
+    <p class="why-lede">We're a student-run studio based in New Jersey. That means fewer layers, faster decisions, and the person designing your site is the person actually building it.</p>
+    <div class="why-grid">
+      <div class="why-item"><span class="idx mono">01</span><h3>Direct access</h3><p>You talk to the person building your site — no account managers, no relay.</p></div>
+      <div class="why-item"><span class="idx mono">02</span><h3>Fast iteration</h3><p>Changes happen in days, not sprint cycles — one person means one decision-maker.</p></div>
+      <div class="why-item"><span class="idx mono">03</span><h3>Modern stack</h3><p>The same proven tools across every build — Node, Express, SQLite, and more as the project needs it.</p></div>
+      <div class="why-item"><span class="idx mono">04</span><h3>Built from scratch</h3><p>No page builders, no templates — every project is written and designed from the ground up.</p></div>
+    </div>
+  </div>
+</section>
 
 <section class="cta-band">
   <div class="wrap cta-band-inner">
     <div>
-      <div class="fig"><span class="num">FIG. 02</span><span class="rule"></span><span class="label">Get started</span></div>
+      <div class="fig"><span class="num">FIG. 05</span><span class="rule"></span><span class="label">Get started</span></div>
       <h2 class="section-title">Want something like this for your business?</h2>
       <p class="lede-dark">Every project here started as a first conversation.</p>
     </div>
